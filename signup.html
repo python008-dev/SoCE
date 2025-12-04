@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Coding Club Chandigarh University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+        
+        /* Custom Transitions */
+        .transition-all-300 {
+            transition: all 0.3s ease;
+        }
+        
+        /* Password Toggle Animation */
+        .password-icon-container {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .password-icon {
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 font-sans bg-cover bg-center" 
+     style="font-family: 'Poppins', sans-serif; background-image: url('assets/images/logos/bg-image.jpg');">
+    
+    <!-- Background Overlay -->
+    <div class="absolute inset-0 bg-black/50"></div>
+    
+    <!-- Signup Container -->
+    <div class="w-full max-w-md relative z-10 animate-fade-in">
+        <div class="bg-black/70 backdrop-blur-sm rounded-2xl border border-white/20 p-6 shadow-2xl">
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <img 
+                        src="assets/images/logos/culogo.png" 
+                        alt="College Logo" 
+                        class="h-14 w-14 object-contain transition-all-300 group-hover:scale-105"
+                    />
+                    <div class="text-white">
+                        <h1 class="text-lg font-bold">Chandigarh University</h1>
+                        <p class="text-white/80 text-sm">Unnao Campus</p>
+                    </div>
+                </div>
+                <div class="inline-flex items-center gap-3 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                    <div class="h-8 w-8 bg-white rounded-full flex items-center justify-center">
+                        <i data-lucide="user" class="h-4 w-4 text-red-600"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white">CLUB REGISTRATION</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-4">
+                <!-- Name Input -->
+                <div class="space-y-2">
+                    <div class="relative">
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Full Name"
+                            class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl px-4 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                            required
+                        />
+                        <div id="nameError" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Email Input -->
+                <div class="space-y-2">
+                    <div class="relative">
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Email Address"
+                            class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl px-4 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                            required
+                        />
+                        <div id="emailError" class="text-red-300 text-sm mt-1 hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="space-y-2">
+                    <div class="relative">
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl px-4 pr-12 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                            required
+                        />
+                        
+                        <!-- Password Toggle Button -->
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all-300 focus:outline-none"
+                            aria-label="Show password"
+                        >
+                            <div class="password-icon-container">
+                                <i data-lucide="eye-off" class="password-icon h-5 w-5 opacity-100 scale-100" id="passwordEyeOff"></i>
+                                <i data-lucide="eye" class="password-icon h-5 w-5 opacity-0 scale-0" id="passwordEye"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div id="passwordError" class="text-red-300 text-sm hidden"></div>
+                </div>
+
+                <!-- Confirm Password Input -->
+                <div class="space-y-2">
+                    <div class="relative">
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm Password"
+                            class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl px-4 pr-12 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                            required
+                        />
+                        
+                        <!-- Confirm Password Toggle Button -->
+                        <button
+                            type="button"
+                            id="toggleConfirmPassword"
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all-300 focus:outline-none"
+                            aria-label="Show confirm password"
+                        >
+                            <div class="password-icon-container">
+                                <i data-lucide="eye-off" class="password-icon h-5 w-5 opacity-100 scale-100" id="confirmEyeOff"></i>
+                                <i data-lucide="eye" class="password-icon h-5 w-5 opacity-0 scale-0" id="confirmEye"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div id="confirmPasswordError" class="text-red-300 text-sm hidden"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="w-full h-12 bg-red-600 text-white hover:bg-red-700 font-bold text-base rounded-xl transition-all-300 flex items-center justify-center"
+                >
+                    <span id="buttonText">CREATE ACCOUNT</span>
+                    <i data-lucide="loader-2" class="h-4 w-4 ml-2 hidden animate-spin" id="loaderIcon"></i>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center my-4">
+                <div class="flex-1 border-t border-white/30"></div>
+                <span class="px-3 text-white text-sm font-medium">OR</span>
+                <div class="flex-1 border-t border-white/30"></div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center">
+                <a href="login.html" 
+                   class="inline-block w-full bg-white text-black hover:bg-gray-200 font-bold text-sm py-2 rounded-xl cursor-pointer transition-all-300">
+                    CLICK HERE FOR LOGIN
+                </a>
+            </div>
+
+            <!-- Admin Login Link -->
+            <div class="text-center mt-4">
+                <a href="adminlogin.html" class="text-white/80 hover:text-white cursor-pointer text-xs transition-all-300">
+                    Admin Login
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 hidden">
+        <div class="bg-black/80 backdrop-blur-sm rounded-2xl border border-white/20 p-6 max-w-sm w-full mx-4">
+            <div class="text-center">
+                <div class="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check" class="h-6 w-6 text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Account created!</h3>
+                <p class="text-white/80 mb-6">Welcome to Coding Club!</p>
+                <button id="redirectButton" 
+                        class="w-full bg-red-600 text-white hover:bg-red-700 font-bold py-3 rounded-xl transition-all-300">
+                    Go to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // DOM Elements
+        const signupForm = document.getElementById('signupForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordEyeOff = document.getElementById('passwordEyeOff');
+        const passwordEye = document.getElementById('passwordEye');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const confirmEyeOff = document.getElementById('confirmEyeOff');
+        const confirmEye = document.getElementById('confirmEye');
+        const submitButton = document.getElementById('submitButton');
+        const buttonText = document.getElementById('buttonText');
+        const loaderIcon = document.getElementById('loaderIcon');
+        const successModal = document.getElementById('successModal');
+        const redirectButton = document.getElementById('redirectButton');
+        
+        // Password Visibility Toggle
+        let isPasswordVisible = false;
+        let isConfirmPasswordVisible = false;
+        
+        // Password Toggle
+        togglePassword.addEventListener('click', () => {
+            isPasswordVisible = !isPasswordVisible;
+            
+            if (isPasswordVisible) {
+                passwordInput.type = 'text';
+                passwordEyeOff.classList.remove('opacity-100', 'scale-100');
+                passwordEyeOff.classList.add('opacity-0', 'scale-0');
+                passwordEye.classList.remove('opacity-0', 'scale-0');
+                passwordEye.classList.add('opacity-100', 'scale-100');
+                togglePassword.setAttribute('aria-label', 'Hide password');
+            } else {
+                passwordInput.type = 'password';
+                passwordEye.classList.remove('opacity-100', 'scale-100');
+                passwordEye.classList.add('opacity-0', 'scale-0');
+                passwordEyeOff.classList.remove('opacity-0', 'scale-0');
+                passwordEyeOff.classList.add('opacity-100', 'scale-100');
+                togglePassword.setAttribute('aria-label', 'Show password');
+            }
+        });
+        
+        // Confirm Password Toggle
+        toggleConfirmPassword.addEventListener('click', () => {
+            isConfirmPasswordVisible = !isConfirmPasswordVisible;
+            
+            if (isConfirmPasswordVisible) {
+                confirmPasswordInput.type = 'text';
+                confirmEyeOff.classList.remove('opacity-100', 'scale-100');
+                confirmEyeOff.classList.add('opacity-0', 'scale-0');
+                confirmEye.classList.remove('opacity-0', 'scale-0');
+                confirmEye.classList.add('opacity-100', 'scale-100');
+                toggleConfirmPassword.setAttribute('aria-label', 'Hide confirm password');
+            } else {
+                confirmPasswordInput.type = 'password';
+                confirmEye.classList.remove('opacity-100', 'scale-100');
+                confirmEye.classList.add('opacity-0', 'scale-0');
+                confirmEyeOff.classList.remove('opacity-0', 'scale-0');
+                confirmEyeOff.classList.add('opacity-100', 'scale-100');
+                toggleConfirmPassword.setAttribute('aria-label', 'Show confirm password');
+            }
+        });
+        
+        // Form Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+        
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.classList.add('hidden');
+        }
+        
+        // Password Strength Check
+        function checkPasswordStrength(password) {
+            if (password.length < 6) {
+                return { valid: false, message: "Password must be at least 6 characters" };
+            }
+            if (!/[A-Z]/.test(password)) {
+                return { valid: false, message: "Password must contain at least one uppercase letter" };
+            }
+            if (!/[0-9]/.test(password)) {
+                return { valid: false, message: "Password must contain at least one number" };
+            }
+            return { valid: true, message: "Strong password" };
+        }
+        
+        // Real-time Password Match Check
+        confirmPasswordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                showError('confirmPasswordError', 'Passwords do not match');
+            } else {
+                hideError('confirmPasswordError');
+            }
+        });
+        
+        // Form Submission
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            // Reset errors
+            hideError('nameError');
+            hideError('emailError');
+            hideError('passwordError');
+            hideError('confirmPasswordError');
+            
+            // Validate inputs
+            let isValid = true;
+            
+            // Name validation
+            if (!name) {
+                showError('nameError', 'Full name is required');
+                isValid = false;
+            } else if (name.length < 2) {
+                showError('nameError', 'Name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Email validation
+            if (!email) {
+                showError('emailError', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showError('emailError', 'Please enter a valid email');
+                isValid = false;
+            }
+            
+            // Password validation
+            if (!password) {
+                showError('passwordError', 'Password is required');
+                isValid = false;
+            } else {
+                const passwordCheck = checkPasswordStrength(password);
+                if (!passwordCheck.valid) {
+                    showError('passwordError', passwordCheck.message);
+                    isValid = false;
+                }
+            }
+            
+            // Confirm password validation
+            if (!confirmPassword) {
+                showError('confirmPasswordError', 'Please confirm your password');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showError('confirmPasswordError', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            submitButton.disabled = true;
+            buttonText.textContent = 'CREATING ACCOUNT...';
+            loaderIcon.classList.remove('hidden');
+            
+            // Simulate API call (replace with actual API call)
+            setTimeout(() => {
+                // Reset loading state
+                submitButton.disabled = false;
+                buttonText.textContent = 'CREATE ACCOUNT';
+                loaderIcon.classList.add('hidden');
+                
+                // Show success modal
+                successModal.classList.remove('hidden');
+                
+                // Log registration data (for demo only - remove in production)
+                console.log('Registration attempt:', { name, email, password });
+                
+                // Save user data to localStorage (for demo only)
+                localStorage.setItem('userData', JSON.stringify({
+                    name: name,
+                    email: email,
+                    isLoggedIn: true
+                }));
+                
+            }, 1500);
+        });
+        
+        // Redirect to Dashboard
+        redirectButton.addEventListener('click', () => {
+            window.location.href = 'dashboard.html';
+        });
+        
+        // Close modal when clicking outside
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.classList.add('hidden');
+            }
+        });
+        
+        // Auto-close modal and redirect after 3 seconds
+        setTimeout(() => {
+            if (!successModal.classList.contains('hidden')) {
+                window.location.href = 'dashboard.html';
+            }
+        }, 3000);
+        
+        // Demo data for testing
+        console.log('Demo registration data:');
+        console.log('Name: John Doe');
+        console.log('Email: student@culko.in');
+        console.log('Password: Password123');
+        
+        // Optional: Auto-fill demo data for testing
+        // Uncomment the lines below for testing purposes only
+        // nameInput.value = 'John Doe';
+        // emailInput.value = 'student@culko.in';
+        // passwordInput.value = 'Password123';
+        // confirmPasswordInput.value = 'Password123';
+    </script>
+</body>
+</html>

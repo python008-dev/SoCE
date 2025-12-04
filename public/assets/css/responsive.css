@@ -1,0 +1,557 @@
+/* ===================================
+   RESPONSIVE DESIGN
+   Mobile-first approach
+   =================================== */
+
+/* ===================================
+   TABLET VIEW (768px and up)
+   =================================== */
+
+@media (max-width: 768px) {
+    /* Typography */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Navigation */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow-lg);
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu a.active::after {
+        display: none;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 4rem var(--spacing-md);
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    /* Page Hero */
+    .page-hero {
+        padding: 3rem var(--spacing-md);
+    }
+
+    .page-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .page-hero p {
+        font-size: 1rem;
+    }
+
+    /* About Preview */
+    .about-preview {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .about-content {
+        gap: var(--spacing-md);
+    }
+
+    /* Stats */
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    /* Events Grid */
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-card {
+        flex-direction: column;
+    }
+
+    .event-date {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .event-date .day {
+        font-size: 1.5rem;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Team Grid */
+    .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    /* About Section */
+    .activities-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Container padding */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    /* Footer */
+    .footer-content {
+        gap: var(--spacing-lg);
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ===================================
+   MOBILE VIEW (480px and down)
+   =================================== */
+
+@media (max-width: 480px) {
+    /* Root Font Sizes */
+    :root {
+        --font-size-base: 14px;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 2.5rem;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    h2 {
+        font-size: 1.35rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    /* Navbar */
+    .navbar-container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .navbar-brand {
+        width: 130px;
+        height: 55px;
+    }
+
+    .navbar-logo {
+        height: 50px;
+        max-width: 125px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 3rem var(--spacing-sm);
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Page Hero */
+    .page-hero {
+        padding: 2rem var(--spacing-sm);
+    }
+
+    .page-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-hero p {
+        font-size: 0.95rem;
+    }
+
+    /* Sections */
+    .about-preview,
+    .about-section,
+    .events-section,
+    .projects-section,
+    .team-section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    /* Cards */
+    .about-card,
+    .activity-card,
+    .event-card,
+    .project-card,
+    .team-card,
+    .value-item {
+        padding: var(--spacing-md);
+    }
+
+    .about-card {
+        border-left-width: 3px;
+    }
+
+    /* Stats */
+    .stats .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .stat-item {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .stat-item h3 {
+        font-size: 1.75rem;
+    }
+
+    .stat-item p {
+        font-size: 0.9rem;
+    }
+
+    /* Event Date Box */
+    .event-date {
+        flex-direction: column;
+        width: auto;
+        min-height: auto;
+        padding: var(--spacing-md) var(--spacing-lg);
+        gap: var(--spacing-xs);
+    }
+
+    .event-date .day {
+        font-size: 1.35rem;
+    }
+
+    .event-date .month {
+        font-size: 0.8rem;
+    }
+
+    .event-content {
+        padding: var(--spacing-md);
+    }
+
+    .event-content h3 {
+        font-size: 1rem;
+    }
+
+    /* Team Image */
+    .team-image {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto var(--spacing-md);
+        font-size: 2.5rem;
+    }
+
+    /* About Section */
+    .about-block h2,
+    .team-category h2 {
+        font-size: 1.35rem;
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .mission-list li {
+        padding-left: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+        font-size: 0.95rem;
+    }
+
+    .activities-grid,
+    .values-grid,
+    .projects-grid,
+    .team-grid,
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-section p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .footer-bottom {
+        padding-top: var(--spacing-md);
+        font-size: 0.85rem;
+    }
+
+    /* Join Section */
+    .join-section {
+        padding: var(--spacing-lg);
+        margin-top: var(--spacing-lg);
+    }
+
+    .join-section h2 {
+        font-size: 1.35rem;
+    }
+
+    .join-section p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Container */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    /* Grid Adjustments */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tech Badges */
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .project-tag {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* Event Meta */
+    .event-meta {
+        font-size: 0.85rem;
+    }
+
+    /* Team Role */
+    .team-role {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    /* Spacing Adjustments */
+    .hero .btn {
+        margin-top: var(--spacing-md);
+    }
+
+    /* Project Header */
+    .project-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .project-tag {
+        width: fit-content;
+    }
+}
+
+/* ===================================
+   EXTRA SMALL DEVICES (360px and down)
+   =================================== */
+
+@media (max-width: 360px) {
+    :root {
+        --spacing-md: 1rem;
+        --spacing-lg: 1.25rem;
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+    }
+
+    h1 {
+        font-size: 1.35rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        width: 110px;
+        height: 50px;
+    }
+
+    .navbar-logo {
+        height: 45px;
+        max-width: 105px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.35rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .team-image {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .project-tech {
+        flex-wrap: wrap;
+    }
+
+    .tech-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    /* More aggressive padding reduction */
+    .about-preview,
+    .about-section,
+    .events-section,
+    .projects-section,
+    .team-section,
+    .footer {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+}
+
+/* ===================================
+   LANDSCAPE MODE ADJUSTMENTS
+   =================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 2rem var(--spacing-md);
+    }
+
+    .hero-content h2 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .hero-subtitle {
+        display: none;
+    }
+
+    .hero .btn {
+        margin-top: 0.5rem;
+    }
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+
+@media print {
+    .navbar,
+    .footer,
+    .hamburger {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .page-break {
+        page-break-after: always;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}

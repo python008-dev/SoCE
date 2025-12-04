@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Coding Club Chandigarh University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+        
+        /* Custom Transitions */
+        .transition-all-300 {
+            transition: all 0.3s ease;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans no-scrollbar" style="font-family: 'Poppins', sans-serif;">
+    
+    <!-- Background with Overlay -->
+    <div class="fixed inset-0"
+         style="
+            background-image: url('assets/images/CUCodingClubBgBanner.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+         ">
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center p-4 relative z-10">
+        <div class="w-full max-w-md">
+            <div class="bg-black/70 backdrop-blur-sm rounded-2xl border border-white/20 p-6 animate-fade-in">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <div class="flex items-center justify-center gap-3 mb-4">
+                         <img 
+                        src="assets/images/logos/culogo.png" 
+                        alt="College Logo" 
+                        class="h-14 w-14 object-contain transition-all-300 group-hover:scale-105"
+                    />
+                        <div class="text-white">
+                            <h1 class="text-lg font-bold">Chandigarh University</h1>
+                            <p class="text-white/80 text-sm">Unnao Campus</p>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center gap-3 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                        <div class="h-8 w-8 bg-white rounded-full flex items-center justify-center">
+                            <i data-lucide="shield" class="h-4 w-4 text-red-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white">ADMIN LOGIN</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Login Form -->
+                <form id="adminLoginForm" class="space-y-4">
+                    <!-- Email Input -->
+                    <div class="space-y-2">
+                        <label for="email" class="text-white text-sm font-medium">Email</label>
+                        <div class="relative">
+                            <i data-lucide="mail" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60"></i>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="admin@culko.in"
+                                class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl pl-10 pr-4 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                                required
+                            />
+                        </div>
+                        <div id="emailError" class="text-red-300 text-sm hidden"></div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="space-y-2">
+                        <label for="password" class="text-white text-sm font-medium">Password</label>
+                        <div class="relative">
+                            <i data-lucide="lock" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60"></i>
+                            <input
+                                id="password"
+                                type="password"
+                                placeholder="Enter admin password"
+                                class="w-full bg-black/50 border-2 border-white/30 text-white placeholder-white/60 h-12 text-base rounded-xl pl-10 pr-4 focus:border-white focus:ring-0 focus:outline-none transition-all-300"
+                                required
+                            />
+                        </div>
+                        <div id="passwordError" class="text-red-300 text-sm hidden"></div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="submitButton"
+                        class="w-full h-12 bg-red-600 text-white hover:bg-red-700 font-bold text-base rounded-xl transition-all-300 flex items-center justify-center"
+                    >
+                        <span id="buttonText">SIGN IN</span>
+                        <i data-lucide="loader-2" class="h-4 w-4 ml-2 hidden animate-spin" id="loaderIcon"></i>
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="flex items-center my-4">
+                    <div class="flex-1 border-t border-white/30"></div>
+                    <span class="px-3 text-white text-sm font-medium">OR</span>
+                    <div class="flex-1 border-t border-white/30"></div>
+                </div>
+
+                <!-- User Login Link -->
+                <div class="text-center">
+                    <a href="login.html" 
+                       class="inline-block w-full bg-white text-black hover:bg-gray-200 font-bold text-sm py-2 rounded-xl cursor-pointer transition-all-300">
+                        CLICK HERE FOR USER LOGIN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Toast Notification -->
+    <div id="successToast" class="fixed top-4 right-4 z-50 max-w-sm w-full hidden">
+        <div class="bg-green-900/90 backdrop-blur-sm border border-green-700/50 rounded-xl p-4 shadow-2xl">
+            <div class="flex items-start gap-3">
+                <div class="h-8 w-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="check" class="h-4 w-4 text-white"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-white font-bold">Welcome, Admin!</h3>
+                    <p class="text-green-200 text-sm mt-1">You have successfully logged in.</p>
+                </div>
+                <button id="closeToast" class="text-white/70 hover:text-white">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Toast Notification -->
+    <div id="errorToast" class="fixed top-4 right-4 z-50 max-w-sm w-full hidden">
+        <div class="bg-red-900/90 backdrop-blur-sm border border-red-700/50 rounded-xl p-4 shadow-2xl">
+            <div class="flex items-start gap-3">
+                <div class="h-8 w-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="x" class="h-4 w-4 text-white"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-white font-bold">Login failed</h3>
+                    <p class="text-red-200 text-sm mt-1" id="errorMessage">Invalid credentials.</p>
+                </div>
+                <button id="closeErrorToast" class="text-white/70 hover:text-white">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // DOM Elements
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const submitButton = document.getElementById('submitButton');
+        const buttonText = document.getElementById('buttonText');
+        const loaderIcon = document.getElementById('loaderIcon');
+        const successToast = document.getElementById('successToast');
+        const errorToast = document.getElementById('errorToast');
+        const errorMessage = document.getElementById('errorMessage');
+        const closeToast = document.getElementById('closeToast');
+        const closeErrorToast = document.getElementById('closeErrorToast');
+        
+        // Pre-defined Admin Credentials (For demo only)
+        const ADMIN_CREDENTIALS = {
+            email: "admin@culko.in",
+            password: "Admin@12345"
+        };
+        
+        // Toast Functions
+        function showSuccessToast() {
+            successToast.classList.remove('hidden');
+            successToast.classList.add('animate-fade-in');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                hideSuccessToast();
+                // Redirect after toast disappears
+                setTimeout(() => {
+                    window.location.href = "admin-dashboard.html";
+                }, 300);
+            }, 5000);
+        }
+        
+        function hideSuccessToast() {
+            successToast.classList.add('hidden');
+            successToast.classList.remove('animate-fade-in');
+        }
+        
+        function showErrorToast(message = "Invalid credentials.") {
+            errorMessage.textContent = message;
+            errorToast.classList.remove('hidden');
+            errorToast.classList.add('animate-fade-in');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                hideErrorToast();
+            }, 5000);
+        }
+        
+        function hideErrorToast() {
+            errorToast.classList.add('hidden');
+            errorToast.classList.remove('animate-fade-in');
+        }
+        
+        // Close toast buttons
+        if (closeToast) {
+            closeToast.addEventListener('click', hideSuccessToast);
+        }
+        
+        if (closeErrorToast) {
+            closeErrorToast.addEventListener('click', hideErrorToast);
+        }
+        
+        // Form Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+        
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.classList.add('hidden');
+        }
+        
+        // Check Admin Credentials
+        function checkAdminCredentials(email, password) {
+            return email === ADMIN_CREDENTIALS.email && 
+                   password === ADMIN_CREDENTIALS.password;
+        }
+        
+        // Form Submission
+        adminLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            
+            // Reset errors
+            hideError('emailError');
+            hideError('passwordError');
+            
+            // Validate inputs
+            let isValid = true;
+            
+            if (!email) {
+                showError('emailError', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showError('emailError', 'Please enter a valid email');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showError('passwordError', 'Password is required');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            submitButton.disabled = true;
+            buttonText.textContent = 'SIGNING IN...';
+            loaderIcon.classList.remove('hidden');
+            
+            // Simulate API call delay (1.5 seconds)
+            setTimeout(() => {
+                // Reset loading state
+                submitButton.disabled = false;
+                buttonText.textContent = 'SIGN IN';
+                loaderIcon.classList.add('hidden');
+                
+                // Check credentials
+                if (checkAdminCredentials(email, password)) {
+                    // Success
+                    showSuccessToast();
+                    
+                    // Log successful login (for demo only)
+                    console.log('Admin login successful:', { email });
+                    
+                    // Save admin session (for demo only)
+                    localStorage.setItem('adminSession', JSON.stringify({
+                        isAdmin: true,
+                        email: email,
+                        loggedInAt: new Date().toISOString()
+                    }));
+                } else {
+                    // Failed
+                    showErrorToast();
+                    
+                    // Log failed attempt (for demo only)
+                    console.warn('Admin login failed:', { email });
+                }
+            }, 1500);
+        });
+        
+        // Enter key to submit form
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !submitButton.disabled) {
+                adminLoginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+        
+        // Demo credentials hint (for development only)
+        console.log('Admin Demo Credentials:');
+        console.log('Email:', ADMIN_CREDENTIALS.email);
+        console.log('Password:', ADMIN_CREDENTIALS.password);
+        
+        // Optional: Auto-fill demo credentials for testing
+        // Uncomment the lines below for testing purposes only
+        // emailInput.value = ADMIN_CREDENTIALS.email;
+        // passwordInput.value = ADMIN_CREDENTIALS.password;
+    </script>
+</body>
+</html>

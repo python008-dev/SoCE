@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Coding Club Chandigarh University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        
+        /* Custom Transitions */
+        .transition-all-300 {
+            transition: all 0.3s ease;
+        }
+        
+        .transition-all-500 {
+            transition: all 0.5s ease;
+        }
+        
+        /* Hover Effects */
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+        
+        .hover-shadow-xl:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Image styles */
+        .team-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-white via-red-50/30 to-white font-sans" style="font-family: 'Poppins', sans-serif;">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative">
+                    
+                    <img 
+                        src="assets/images/logos/culogo.png" 
+                        alt="College Logo" 
+                        class="h-14 w-14 object-contain transition-all-300 group-hover:scale-105"
+                    />
+                    <div class="absolute -inset-1 bg-red-100 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
+                </div>
+                <div>
+                    <span class="font-bold text-xl text-gray-800 block leading-tight">Coding Club</span>
+                    <span class="text-sm text-red-600 font-medium block leading-tight">Chandigarh University</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="about.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Events
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="projects.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="team.html" class="text-red-600 font-medium transition-all-300 relative group">
+                    Team
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-red-600"></span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuButton" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-all-300">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 px-4 py-3 hidden">
+            <nav class="flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Home
+                </a>
+                <a href="about.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    About
+                </a>
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Events
+                </a>
+                <a href="projects.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Projects
+                </a>
+                <a href="team.html" class="text-red-600 font-medium py-2">
+                    Team
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="relative py-20 bg-gradient-to-br from-red-600 via-red-500 to-red-700 overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute top-0 left-0 w-72 h-72 bg-red-400/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-300/10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+                <i data-lucide="users" class="h-4 w-4"></i>
+                Meet Our Amazing Team
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Our <span class="text-red-100">Team</span>
+            </h1>
+            
+            <p class="text-xl text-red-100 max-w-2xl mx-auto leading-relaxed">
+                Meet the passionate minds behind Coding Club CU - dedicated mentors, visionary leaders, 
+                and talented coordinators working together to build an exceptional tech community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mentors Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <i data-lucide="crown" class="h-8 w-8 text-red-600"></i>
+                    <h2 class="text-4xl font-bold text-gray-800">Faculty Mentors</h2>
+                    <i data-lucide="crown" class="h-8 w-8 text-red-600"></i>
+                </div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experienced faculty guiding and inspiring the next generation of developers
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Mentor 1 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-28 h-28 mx-auto bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Dr_AjayKumarSingh.jpeg" 
+                                        alt="Dr. Ajay Kumar Singh"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                <i data-lucide="award" class="h-4 w-4 text-white"></i>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Prof.(Dr.) Ajay Kumar Singh</h3>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            H.O.D., SoCE
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">Chairman</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">Chairman001@culko.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 100ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-28 h-28 mx-auto bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/AmitKumarMishra.jpeg" 
+                                        alt="Dr. Amit Kumar Mishra"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Dr. Amit Kumar Mishra</h3>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Associate Professor
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">Coordinator</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">amit.l100264@culko.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 200ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-28 h-28 mx-auto bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Dr_VikashMishra.jpeg" 
+                                        alt="Dr. Vikash Mishra"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Dr. Vikash Mishra</h3>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Associate Professor
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">Co-Coordinator</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">vikash.l100357@culko.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 4 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 300ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-28 h-28 mx-auto bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Dr_ManishaJain.png" 
+                                        alt="Dr. Manisha Jain"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Dr. Manisha Jain</h3>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Assistant Professor
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">Co-Coordinator</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">manisha.l100409@culko.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <i data-lucide="star" class="h-8 w-8 text-red-600"></i>
+                    <h2 class="text-4xl font-bold text-gray-800">Leadership Team</h2>
+                    <i data-lucide="star" class="h-8 w-8 text-red-600"></i>
+                </div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Visionary students leading the club towards innovation and excellence
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Leader 1 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Aradhya.jpeg" 
+                                        alt="Aaradhya Gupta"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Aaradhya Gupta</h3>
+                        <div class="bg-gradient-to-r from-red-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            President
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">BTech CSE Core</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">Aaradhyagupta2108@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 2 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 100ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/MayankGautam.jpeg" 
+                                        alt="Mayank Gautam"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Mayank Gautam</h3>
+                        <div class="bg-gradient-to-r from-red-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Vice President
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">BTech IT</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">onlycash419@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 3 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 200ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Shashank Pandey.jpeg" 
+                                        alt="Shashank Pandey"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Shashank Pandey</h3>
+                        <div class="bg-gradient-to-r from-red-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Technical Head
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">BCA HONS</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">pandeyshashank039@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 4 -->
+                <div class="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 300ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-6 text-center relative z-10">
+                        <div class="relative mx-auto mb-6">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-1 shadow-lg">
+                                <div class="w-full h-full bg-white rounded-xl overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/AkshraBajpai.jpeg" 
+                                        alt="Akshra Bajpai"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">Akshra Bajpai</h3>
+                        <div class="bg-gradient-to-r from-red-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-3 shadow-md">
+                            Technical Co-Coordinator
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">BTech IT</p>
+                        <div class="flex items-center justify-center gap-2 text-red-600 text-sm">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span class="break-all">aksharabajpai2@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coordinators Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <i data-lucide="users" class="h-8 w-8 text-red-600"></i>
+                    <h2 class="text-4xl font-bold text-gray-800">Coordinators</h2>
+                    <i data-lucide="users" class="h-8 w-8 text-red-600"></i>
+                </div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Talented individuals driving various initiatives and ensuring smooth operations
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Coordinator 1 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/SampoornTripathi.jpeg" 
+                                        alt="Sampoorn Tripathi"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Sampoorn Tripathi</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Technical Co-Coordinator
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">BTech CSE Sec D</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">tripathisampoorn1@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 2 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 100ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/ParasTiwari.jpeg" 
+                                        alt="Paras Tiwari"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Paras Tiwari</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Technical Co-Coordinator
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">BTech CSE CORE</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">Parastiwari264@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 3 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 200ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/KishanVerma.jpg" 
+                                        alt="Kishan Verma"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Kishan Verma</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Social Media Manager
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">Btech CSE AIML Sec-2</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">vermakishan478@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 4 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 300ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/AadyaGupta.jpeg" 
+                                        alt="Aadya Gupta"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Aadya Gupta</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Core Member
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">Btech CSE CORE Sec-E</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">aadyagupta1408@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 5 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 400ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/MohdHumza.jpeg" 
+                                        alt="Mohd Humza"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Mohd humza</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Core Member
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">Btech CSE CORE Sec-E</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">25LBCS1305@culkomail.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 6 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 500ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/MantraShukla.jpeg" 
+                                        alt="Mantra Shukla"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Mantra Shukla</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Core Member
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">Btech CSE CORE Sec-B</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">Mantrashukla15@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinator 7 -->
+                <div class="group relative overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all-500 transform hover-lift animate-fade-in" style="animation-delay: 600ms">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/3 to-red-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="p-5 text-center relative z-10">
+                        <div class="mx-auto mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-red-300 to-red-400 rounded-xl p-0.5 shadow-md">
+                                <div class="w-full h-full bg-white rounded-lg overflow-hidden">
+                                    <img 
+                                        src="assets/images/logos/Abhisekgupta.jpeg" 
+                                        alt="Ayan Ahmad Khan"
+                                        class="team-image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-base font-semibold text-gray-800 mb-2 leading-tight">Abhishek Gupta</h3>
+                        <div class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-2">
+                            Social Media Coordinator
+                        </div>
+                        <p class="text-gray-600 text-xs mb-3 leading-relaxed">Btech IT</p>
+                        <div class="flex items-center justify-center gap-1 text-red-600 text-xs">
+                            <i data-lucide="mail" class="h-3 w-3"></i>
+                            <span class="break-all">25LBIT1004@culkomail.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us CTA -->
+    <section class="py-20 bg-gradient-to-br from-red-600 to-red-700 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-red-400/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-red-300/10 rounded-full -translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Make an Impact?
+            </h2>
+            <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Join our passionate team of developers and innovators. Together, we can build amazing 
+                projects, learn new technologies, and create a lasting impact in the tech community.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html">
+                    <button class="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all-300 transform hover:scale-105 rounded-lg">
+                        Join Our Team
+                    </button>
+                </a>
+                <a href="events.html">
+                    <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold backdrop-blur-sm rounded-lg">
+                        View Events
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-10 w-10 bg-red-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="users" class="h-6 w-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Coding Club CU</h4>
+                            <p class="text-red-400 text-sm">Chandigarh University</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Building a vibrant community of developers, innovators, and tech enthusiasts 
+                        at Chandigarh University. Together, we learn, build, and grow.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li>
+                            <a href="about.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Events & Workshops
+                            </a>
+                        </li>
+                        <li>
+                            <a href="team.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Our Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Projects
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Contact Info</h4>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-red-500"></i>
+                            <span>codingclub@culko.in</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="h-5 w-5 text-red-500"></i>
+                            <span>Chandigarh University, Lucknow Campus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500">
+                    &copy; 2025 Coding Club CU. All rights reserved. | Built with ❤️ by our amazing team
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('animate-fade-in');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('animate-fade-in');
+                }
+            });
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

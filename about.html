@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Coding Club Chandigarh University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Grid Pattern */
+        .bg-grid-slate-100 {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f1f5f9' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Custom Transitions */
+        .transition-all-300 {
+            transition: all 0.3s ease;
+        }
+        
+        .transition-all-500 {
+            transition: all 0.5s ease;
+        }
+        
+        /* Hover Effects */
+        .hover-lift:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white font-sans" style="font-family: 'Poppins', sans-serif;">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative">
+                   <img 
+                        src="assets/images/logos/culogo.png" 
+                        alt="College Logo" 
+                        class="h-14 w-14 object-contain transition-all-300 group-hover:scale-105"
+                    />
+                </div>
+                <div>
+                    <span class="font-bold text-xl text-gray-800 block leading-tight">Coding Club</span>
+                    <span class="text-sm text-red-600 font-medium block leading-tight">Chandigarh University</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="about.html" class="text-red-600 font-medium transition-all-300 relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-red-600"></span>
+                </a>
+                
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Events
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="projects.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="team.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Team
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuButton" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-all-300">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 px-4 py-3 hidden">
+            <nav class="flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Home
+                </a>
+                <a href="about.html" class="text-red-600 font-medium py-2">
+                    About
+                </a>
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Events
+                </a>
+                <a href="projects.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Projects
+                </a>
+                <a href="team.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Team
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Enhanced Page Hero -->
+    <section class="relative py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 border-b border-gray-200 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
+        <div class="absolute top-10 left-10 w-20 h-20 bg-red-100 rounded-full blur-xl opacity-50"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-blue-100 rounded-full blur-xl opacity-50"></div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-red-200 animate-pulse">
+                <i data-lucide="sparkles" class="h-4 w-4"></i>
+                About Our Community
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight animate-fade-in">
+                About <span class="text-red-600 bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">Coding Club</span>
+            </h1>
+            
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed animate-fade-in">
+                Discover the passion, purpose, and people behind Chandigarh University's premier tech community. 
+                Where innovation meets collaboration.
+            </p>
+        </div>
+    </section>
+
+    <!-- Animated Stats Section -->
+    <section class="py-16 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4 border border-green-200">
+                    <i data-lucide="trending-up" class="h-4 w-4"></i>
+                    Growing Stronger Every Day
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Impact in Numbers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Witness our journey through these live statistics that showcase our community's growth
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="text-center group hover:scale-105 transition-all-500 p-6 rounded-2xl hover:bg-gradient-to-br hover:from-white hover:to-gray-50 hover:shadow-xl border border-transparent hover:border-gray-200 animate-fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg">
+                        <i data-lucide="users" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-bold text-red-600 mb-2 group-hover:scale-110 transition-all-300" id="counter1">
+                        0+
+                    </div>
+                    <div class="text-gray-600 font-medium text-sm md:text-base">Active Members</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center group hover:scale-105 transition-all-500 p-6 rounded-2xl hover:bg-gradient-to-br hover:from-white hover:to-gray-50 hover:shadow-xl border border-transparent hover:border-gray-200 animate-fade-in" style="animation-delay: 200ms">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg">
+                        <i data-lucide="calendar" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-bold text-red-600 mb-2 group-hover:scale-110 transition-all-300" id="counter2">
+                        0+
+                    </div>
+                    <div class="text-gray-600 font-medium text-sm md:text-base">Events Conducted</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center group hover:scale-105 transition-all-500 p-6 rounded-2xl hover:bg-gradient-to-br hover:from-white hover:to-gray-50 hover:shadow-xl border border-transparent hover:border-gray-200 animate-fade-in" style="animation-delay: 400ms">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg">
+                        <i data-lucide="code-2" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-bold text-red-600 mb-2 group-hover:scale-110 transition-all-300" id="counter3">
+                        0+
+                    </div>
+                    <div class="text-gray-600 font-medium text-sm md:text-base">Projects Completed</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center group hover:scale-105 transition-all-500 p-6 rounded-2xl hover:bg-gradient-to-br hover:from-white hover:to-gray-50 hover:shadow-xl border border-transparent hover:border-gray-200 animate-fade-in" style="animation-delay: 600ms">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg">
+                        <i data-lucide="graduation-cap" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-bold text-red-600 mb-2 group-hover:scale-110 transition-all-300" id="counter4">
+                        0+
+                    </div>
+                    <div class="text-gray-600 font-medium text-sm md:text-base">Workshops Held</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <div class="inline-flex items-center justify-center gap-4 mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce-slow">
+                        <i data-lucide="target" class="h-10 w-10 text-white"></i>
+                    </div>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Vision</h2>
+                <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                    To create a vibrant community of developers and tech enthusiasts at Chandigarh University 
+                    who collaborate, innovate, and contribute to the tech ecosystem through quality projects 
+                    and knowledge sharing. We envision a future where every student has the opportunity to 
+                    explore, learn, and excel in technology.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 bg-gradient-to-br from-red-50 to-red-100/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg border border-red-200 animate-pulse">
+                    <i data-lucide="star" class="h-10 w-10 text-red-600"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-8">Our Mission</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                    We aim to empower students with practical skills and create opportunities for growth in technology.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Mission Item 1 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Provide a platform for students to learn and practice coding skills</p>
+                </div>
+                
+                <!-- Mission Item 2 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in" style="animation-delay: 100ms">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Organize workshops, competitions, and hackathons</p>
+                </div>
+                
+                <!-- Mission Item 3 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in" style="animation-delay: 200ms">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Mentor new developers and foster peer learning</p>
+                </div>
+                
+                <!-- Mission Item 4 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in" style="animation-delay: 300ms">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Build collaborative projects that solve real-world problems</p>
+                </div>
+                
+                <!-- Mission Item 5 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in" style="animation-delay: 400ms">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Connect students with industry professionals</p>
+                </div>
+                
+                <!-- Mission Item 6 -->
+                <div class="flex items-start gap-4 group hover:translate-x-2 transition-all-500 p-6 rounded-2xl hover:bg-white/80 hover:shadow-lg border border-transparent hover:border-red-200 animate-fade-in" style="animation-delay: 500ms">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-all-300 shadow-md">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed font-medium">Promote open-source contribution and community participation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="w-20 h-20 bg-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg animate-bounce-slow">
+                    <i data-lucide="calendar" class="h-10 w-10 text-white"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Activities</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Engaging events and programs designed to enhance your technical skills and career growth
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Activity 1 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in">
+                    <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="code-2" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Workshops</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Regular sessions on modern programming languages, frameworks, and development practices.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in" style="animation-delay: 100ms">
+                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="trophy" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Hackathons</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">24-hour coding marathons where students collaborate to build innovative projects.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in" style="animation-delay: 200ms">
+                    <div class="h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="users" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Competitions</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Coding contests and challenges to test skills and compete with peers.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 4 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in" style="animation-delay: 300ms">
+                    <div class="h-2 bg-gradient-to-r from-orange-500 to-red-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="graduation-cap" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Guest Talks</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Industry experts share insights and career guidance with our community.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 5 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in" style="animation-delay: 400ms">
+                    <div class="h-2 bg-gradient-to-r from-yellow-500 to-amber-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="lightbulb" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Projects</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Collaborative initiatives to build real-world applications and open-source contributions.</p>
+                    </div>
+                </div>
+
+                <!-- Activity 6 -->
+                <div class="group hover:shadow-2xl transition-all-500 transform hover-lift border-0 shadow-lg overflow-hidden bg-white animate-fade-in" style="animation-delay: 500ms">
+                    <div class="h-2 bg-gradient-to-r from-rose-500 to-pink-500"></div>
+                    <div class="p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 shadow-lg group-hover:rotate-12">
+                            <i data-lucide="heart" class="h-8 w-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Mentorship</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">One-on-one guidance from experienced developers to help beginners grow.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="w-20 h-20 bg-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg animate-pulse">
+                    <i data-lucide="heart" class="h-10 w-10 text-white"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Core Values</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    The principles that guide everything we do at Coding Club CU
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Value 1 -->
+                <div class="text-center border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift group animate-fade-in">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 border group-hover:rotate-12">
+                            <i data-lucide="users" class="h-8 w-8 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Collaboration</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">We believe in the power of teamwork and collective learning.</p>
+                    </div>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="text-center border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift group animate-fade-in" style="animation-delay: 100ms">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 border group-hover:rotate-12">
+                            <i data-lucide="lightbulb" class="h-8 w-8 text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Innovation</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">We encourage creative thinking and pushing technological boundaries.</p>
+                    </div>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="text-center border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift group animate-fade-in" style="animation-delay: 200ms">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 border group-hover:rotate-12">
+                            <i data-lucide="heart" class="h-8 w-8 text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Inclusivity</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Everyone is welcome, regardless of experience level or background.</p>
+                    </div>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="text-center border-0 shadow-lg hover:shadow-2xl transition-all-500 transform hover-lift group animate-fade-in" style="animation-delay: 300ms">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all-300 border group-hover:rotate-12">
+                            <i data-lucide="star" class="h-8 w-8 text-amber-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Excellence</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">We strive for quality in all our projects and activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-red-600 to-red-700 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute top-0 left-0 w-72 h-72 bg-red-400/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-300/10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready to Join Us?</h2>
+            <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Become part of our growing community and start your journey in technology with like-minded peers.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="events.html">
+                    <button class="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all-300 transform hover:scale-105 group rounded-lg flex items-center justify-center mx-auto">
+                        Explore Events
+                        <i data-lucide="arrow-right" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </a>
+                <a href="team.html">
+                    <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold backdrop-blur-sm transform hover:scale-105 transition-all-300 rounded-lg">
+                        Meet Our Team
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-12 w-12 bg-red-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="code-2" class="h-7 w-7 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Coding Club CU</h4>
+                            <p class="text-red-400 text-sm">Chandigarh University</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Building a vibrant community of developers, innovators, and tech enthusiasts 
+                        at Chandigarh University. Together, we learn, build, and grow.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li>
+                            <a href="about.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="events.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Events & Workshops
+                            </a>
+                        </li>
+                        <li>
+                            <a href="team.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Our Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="hover:text-white transition-all-300 flex items-center gap-2 group">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                                Projects
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Contact Info</h4>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-red-500"></i>
+                            <span>codingclub@culko.in</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="h-5 w-5 text-red-500"></i>
+                            <span>Chandigarh University, Lucknow Campus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-500">
+                    &copy; 2025 Coding Club CU. All rights reserved. | Built with ❤️ by our amazing team
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Animated Counter Function
+        function animateCounter(elementId, endValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let start = 0;
+            const increment = endValue / (duration / 16); // 60fps
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= endValue) {
+                    element.textContent = endValue + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.ceil(start) + '+';
+                }
+            }, 16);
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('animate-fade-in');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('animate-fade-in');
+                }
+            });
+        }
+        
+        // Start counters when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                animateCounter('counter1', 100, 2500);
+                animateCounter('counter2', 100, 2500);
+                animateCounter('counter3', 100, 2500);
+                animateCounter('counter4', 100, 2500);
+            }, 500);
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

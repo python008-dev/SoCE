@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Coding Club Chandigarh University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        /* ===================================
+           CONTACT FORM STYLES
+           Page-specific form styling
+           =================================== */
+
+        .contact-page-section {
+            padding: var(--spacing-2xl) 0;
+            min-height: calc(100vh - 200px);
+            background-color: var(--light-gray);
+        }
+
+        .contact-form-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-lg);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-form-title h1 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-form-title p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Form Group Styles */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .form-group label .required {
+            color: #E74C3C;
+            margin-left: 4px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="url"],
+        .form-group input[type="file"] {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="url"]:focus,
+        .form-group input[type="file"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 77, 156, 0.1);
+        }
+
+        .form-group input.error {
+            border-color: #E74C3C;
+        }
+
+        .form-group input.error:focus {
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        /* Textarea Styles */
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: white;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 77, 156, 0.1);
+        }
+
+        .form-group textarea.error {
+            border-color: #E74C3C;
+        }
+
+        .form-group textarea.error:focus {
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .error-message {
+            color: #E74C3C;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-group input.error + .error-message {
+            display: block;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px;
+            background-color: var(--light-gray);
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .resume-option {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .resume-option label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .resume-option input[type="text"],
+        .resume-option input[type="file"] {
+            padding: 10px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .resume-option input[type="text"]:focus,
+        .resume-option input[type="file"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 77, 156, 0.1);
+        }
+
+        /* Form Buttons */
+        .form-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: var(--spacing-xl);
+        }
+
+        .btn-submit,
+        .btn-reset {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+            flex: 1;
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(10, 77, 156, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-reset {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-reset:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 16px;
+            background-color: #D4EDDA;
+            color: #155724;
+            border: 2px solid #C3E6CB;
+            border-radius: 6px;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            font-weight: 600;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form-container {
+                padding: var(--spacing-lg);
+                margin: 0 var(--spacing-md);
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .btn-submit,
+            .btn-reset {
+                width: 100%;
+            }
+
+            .resume-section {
+                padding: 12px;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-page-section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .contact-form-container {
+                padding: var(--spacing-lg);
+                margin: var(--spacing-md);
+                border-radius: 12px;
+            }
+
+            .contact-form-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: var(--spacing-md);
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="url"],
+            .form-group input[type="file"] {
+                font-size: 16px;
+                padding: 14px;
+            }
+
+            .form-buttons {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <img src="assets/images/logos/culogo.png" alt="College Logo" class="navbar-logo">
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="team.html">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Contact Us</h1>
+        <p>Get in touch with the Coding Club</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-page-section">
+        <div class="container">
+            <div class="contact-form-container">
+                <!-- Title -->
+                <div class="contact-form-title">
+                    <h1>We'd Love to Hear From You</h1>
+                    <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! Your message has been sent successfully. We'll contact you soon!
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" class="contact-form">
+                    <!-- Full Name Field -->
+                    <div class="form-group">
+                        <label for="fullName">
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            placeholder="Enter your full name" 
+                            required
+                        >
+                        <span class="error-message">Full Name is required</span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter your email address" 
+                            required
+                        >
+                        <span class="error-message">Valid email is required</span>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group">
+                        <label for="message">
+                            Message
+                            <span class="required">*</span>
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            placeholder="Tell us about your interests, experience, skills, and why you want to join..." 
+                            rows="6"
+                            required
+                        ></textarea>
+                        <span class="error-message">Message is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Resume (Optional)</label>
+                        <div class="resume-section">
+                            <!-- Resume URL Option -->
+                            <div class="resume-option">
+                                <label for="resumeUrl">
+                                    📎 Resume URL
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="resumeUrl" 
+                                    name="resumeUrl" 
+                                    placeholder="https://example.com/resume.pdf"
+                                >
+                            </div>
+
+                            <!-- Resume File Upload Option -->
+                            <div class="resume-option">
+                                <label for="resumeFile">
+                                    📁 Or Upload File (PDF, DOC, DOCX)
+                                </label>
+                                <input 
+                                    type="file" 
+                                    id="resumeFile" 
+                                    name="resumeFile"
+                                    accept=".pdf,.doc,.docx"
+                                >
+                                <span class="error-message" id="fileError">Only PDF, DOC, and DOCX files are allowed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit">Submit</button>
+                        <button type="reset" class="btn-reset">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Coding Club CU</h4>
+                    <p>Building a community of developers at Chandigarh University</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: codingclub123@culko.in</p>
+                    <p>Campus: Chandigarh University Lucknow UP</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Coding Club CU. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="feedback-modal">
+        <div class="feedback-modal-content">
+            <div class="feedback-modal-header">
+                <h3>We'd Love Your Feedback!</h3>
+                <button class="feedback-close" id="feedbackClose" aria-label="Close feedback modal">&times;</button>
+            </div>
+            <div class="feedback-modal-body">
+                <p>Thank you for spending time on our website. Your feedback helps us improve!</p>
+                <form id="feedbackForm">
+                    <textarea 
+                        id="feedbackText" 
+                        placeholder="Please share your thoughts, suggestions, or any issues you encountered..."
+                        rows="6"
+                        required
+                    ></textarea>
+                    <div class="feedback-modal-actions">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="feedbackCloseBtn">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        /* ===================================
+           CONTACT FORM HANDLER
+           Frontend-only form processing
+           =================================== */
+
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const fileInput = document.getElementById('resumeFile');
+
+        /**
+         * Validate email format
+         */
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        /**
+         * Validate file upload
+         */
+        function validateFileUpload(file) {
+            if (!file) return true;
+
+            const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            const maxSize = 5 * 1024 * 1024;
+
+            if (!allowedTypes.includes(file.type)) {
+                document.getElementById('fileError').textContent = 'Only PDF, DOC, and DOCX files are allowed';
+                return false;
+            }
+
+            if (file.size > maxSize) {
+                document.getElementById('fileError').textContent = 'File size must be less than 5MB';
+                return false;
+            }
+
+            return true;
+        }
+
+        /**
+         * File change event listener
+         */
+        if (fileInput) {
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                const fileError = document.getElementById('fileError');
+
+                if (file && !validateFileUpload(file)) {
+                    fileInput.classList.add('error');
+                    fileError.style.display = 'block';
+                } else {
+                    fileInput.classList.remove('error');
+                    fileError.style.display = 'none';
+                }
+            });
+        }
+
+        /**
+         * Form submission handler
+         */
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+            const resumeUrl = document.getElementById('resumeUrl');
+            const resumeFile = document.getElementById('resumeFile');
+
+            let isValid = true;
+
+            // Validate Full Name
+            if (!fullName.value.trim()) {
+                fullName.classList.add('error');
+                isValid = false;
+            } else {
+                fullName.classList.remove('error');
+            }
+
+            // Validate Email
+            if (!isValidEmail(email.value)) {
+                email.classList.add('error');
+                isValid = false;
+            } else {
+                email.classList.remove('error');
+            }
+
+            // Validate Message
+            if (!message.value.trim()) {
+                message.classList.add('error');
+                isValid = false;
+            } else {
+                message.classList.remove('error');
+            }
+
+            // Validate file upload if file is selected
+            if (resumeFile.files.length > 0 && !validateFileUpload(resumeFile.files[0])) {
+                resumeFile.classList.add('error');
+                isValid = false;
+            } else {
+                resumeFile.classList.remove('error');
+            }
+
+            if (!isValid) {
+                console.log('Form validation failed');
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                fullName: fullName.value.trim(),
+                email: email.value.trim(),
+                message: message.value.trim(),
+                resumeUrl: resumeUrl.value.trim() || null,
+                resumeFile: resumeFile.files[0] ? resumeFile.files[0].name : null,
+                submittedAt: new Date().toLocaleString()
+            };
+
+            // Log data to console
+            console.log('='.repeat(60));
+            console.log('CONTACT FORM SUBMISSION');
+            console.log('='.repeat(60));
+            console.log('Full Name:', formData.fullName);
+            console.log('Email:', formData.email);
+            console.log('Message:', formData.message);
+            console.log('Resume URL:', formData.resumeUrl || 'Not provided');
+            console.log('Resume File:', formData.resumeFile || 'Not provided');
+            console.log('Submitted At:', formData.submittedAt);
+            console.log('='.repeat(60));
+
+            // Show success message
+            successMessage.classList.add('show');
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        console.log('Contact form initialized successfully');
+    </script>
+</body>
+</html>

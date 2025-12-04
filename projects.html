@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Coding Club Chandigarh University</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom Animations */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        
+        /* Custom Transitions */
+        .transition-all-300 {
+            transition: all 0.3s ease;
+        }
+        
+        .transition-all-500 {
+            transition: all 0.5s ease;
+        }
+        
+        /* Hover Effects */
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+        
+        .hover-shadow-xl:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Grid Pattern */
+        .bg-grid-gray-100 {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f3f4f6' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white font-sans" style="font-family: 'Poppins', sans-serif;">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+                <img 
+                        src="assets/images/logos/culogo.png" 
+                        alt="College Logo" 
+                        class="h-14 w-14 object-contain transition-all-300 group-hover:scale-105"
+                    />
+                <div>
+                    <span class="font-bold text-lg sm:text-xl text-gray-800 block leading-tight">Coding Club</span>
+                    <span class="text-xs sm:text-sm text-red-600 font-medium block leading-tight">Chandigarh University</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="about.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Events
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+                
+                <a href="projects.html" class="text-red-600 font-medium transition-all-300 relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-red-600"></span>
+                </a>
+                
+                <a href="team.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 relative group">
+                    Team
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all-300 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuButton" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-all-300">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 px-4 py-3 hidden">
+            <nav class="flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Home
+                </a>
+                <a href="about.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    About
+                </a>
+                <a href="events.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Events
+                </a>
+                <a href="projects.html" class="text-red-600 font-medium py-2">
+                    Projects
+                </a>
+                <a href="team.html" class="text-gray-600 font-medium hover:text-red-600 transition-all-300 py-2">
+                    Team
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="relative py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white border-b border-gray-200 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-gray-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
+        <div class="absolute top-10 left-10 w-20 h-20 bg-red-100 rounded-full blur-xl"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-red-50 rounded-full blur-xl"></div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-6">
+                <i data-lucide="code-2" class="h-5 w-5"></i>
+                Innovation Showcase
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+                Our <span class="text-red-600">Projects</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+                Discover innovative projects built by our talented community of developers, 
+                designers, and creators at Chandigarh University.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div class="flex items-center gap-2 text-red-600">
+                    <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Open Source</span>
+                </div>
+                <div class="flex items-center gap-2 text-red-600">
+                    <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Live Demos</span>
+                </div>
+                <div class="flex items-center gap-2 text-red-600">
+                    <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Community Built</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Filter -->
+    <section class="py-8 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-wrap gap-3 justify-center" id="filterContainer">
+                <!-- Filters will be dynamically added -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-16 sm:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+                <!-- Projects will be dynamically added -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-16 hidden">
+                <i data-lucide="code-2" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No projects found</h3>
+                <p class="text-gray-500">Try selecting a different filter to see more projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-red-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Want to Showcase Your Project?</h2>
+            <p class="text-lg text-red-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Join our community and get your project featured here. Collaborate with other developers 
+                and build something amazing together.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all-300 transform hover:scale-105 rounded-lg">
+                    Submit Project
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold rounded-lg">
+                    Join Community
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-12 w-12 bg-red-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="code-2" class="h-7 w-7 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Coding Club CU</h4>
+                            <p class="text-red-400 text-sm">Chandigarh University</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Building a vibrant community of developers, innovators, and tech enthusiasts 
+                        at Chandigarh University.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-all-300">About</a></li>
+                        <li><a href="events.html" class="hover:text-white transition-all-300">Events</a></li>
+                        <li><a href="team.html" class="hover:text-white transition-all-300">Team</a></li>
+                        <li><a href="projects.html" class="hover:text-white transition-all-300">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-white">Contact Info</h4>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-red-500"></i>
+                            <span>codingclub@culko.in</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="h-5 w-5 text-red-500"></i>
+                            <span>Chandigarh University, Lucknow Campus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-500">
+                    &copy; 2025 Coding Club CU. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Project Data
+        const projects = [
+            {
+                id: 1,
+                title: "Campus Connect",
+                type: "Web App",
+                description: "A social platform for students to connect, share notes, and collaborate on projects across campus with real-time messaging and file sharing.",
+                technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+                lead: "Priya Sharma",
+                githubUrl: "https://github.com/codingclubcu/campus-connect",
+                websiteUrl: "https://campusconnect.cu.edu",
+                icon: "users",
+                status: "Live",
+                contributors: 8,
+                stars: 45
+            },
+            {
+                id: 2,
+                title: "Code Analyzer",
+                type: "Developer Tool",
+                description: "An intelligent code review tool that detects bugs, security vulnerabilities, and suggests code quality improvements with detailed reports.",
+                technologies: ["Python", "AST", "Flask", "Docker"],
+                lead: "Arjun Patel",
+                githubUrl: "https://github.com/codingclubcu/code-analyzer",
+                websiteUrl: "https://code-analyzer.cu.edu",
+                icon: "code-2",
+                status: "Beta",
+                contributors: 6,
+                stars: 32
+            },
+            {
+                id: 3,
+                title: "StudyHub",
+                type: "Mobile App",
+                description: "Comprehensive mobile application for students to manage schedules, track assignments, and receive smart academic reminders with AI-powered insights.",
+                technologies: ["Flutter", "Firebase", "Dart", "AI"],
+                lead: "Isha Gupta",
+                githubUrl: "https://github.com/codingclubcu/studyhub",
+                websiteUrl: "https://studyhub.cu.edu",
+                icon: "smartphone",
+                status: "Live",
+                contributors: 5,
+                stars: 28
+            },
+            {
+                id: 4,
+                title: "Data Visualizer",
+                type: "Web Tool",
+                description: "Advanced interactive tool for visualizing complex datasets with multiple chart types, real-time updates, and collaborative features.",
+                technologies: ["Vue.js", "D3.js", "Python", "WebSockets"],
+                lead: "Rajesh Kumar",
+                githubUrl: "https://github.com/codingclubcu/data-visualizer",
+                websiteUrl: "https://dataviz.cu.edu",
+                icon: "bar-chart-3",
+                status: "Live",
+                contributors: 7,
+                stars: 51
+            },
+            {
+                id: 5,
+                title: "IoT Weather Station",
+                type: "Hardware Project",
+                description: "Smart weather monitoring system using IoT sensors with real-time data collection, cloud storage, and predictive analytics.",
+                technologies: ["Arduino", "IoT", "AWS", "Python"],
+                lead: "Aditya Singh",
+                githubUrl: "https://github.com/codingclubcu/iot-weather",
+                websiteUrl: "https://weather.cu.edu",
+                icon: "cloud",
+                status: "Prototype",
+                contributors: 4,
+                stars: 23
+            },
+            {
+                id: 6,
+                title: "AI Chatbot",
+                type: "AI/ML Project",
+                description: "Intelligent chatbot using advanced NLP and machine learning for customer support, information queries, and personalized assistance.",
+                technologies: ["Python", "TensorFlow", "NLP", "FastAPI"],
+                lead: "Neha Verma",
+                githubUrl: "https://github.com/codingclubcu/ai-chatbot",
+                websiteUrl: "https://chatbot.cu.edu",
+                icon: "bot",
+                status: "Live",
+                contributors: 9,
+                stars: 67
+            }
+        ];
+
+        // DOM Elements
+        const filterContainer = document.getElementById('filterContainer');
+        const projectsContainer = document.getElementById('projectsContainer');
+        const emptyState = document.getElementById('emptyState');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Filter State
+        let activeFilter = "all";
+        const projectTypes = ["all", "web app", "mobile app", "developer tool", "hardware project", "ai/ml project"];
+
+        // Render Filters
+        function renderFilters() {
+            filterContainer.innerHTML = '';
+            projectTypes.forEach((type) => {
+                const button = document.createElement('button');
+                button.className = `px-4 py-2 rounded-full text-sm font-medium transition-all-300 capitalize ${
+                    activeFilter === type
+                        ? "bg-red-600 text-white shadow-lg"
+                        : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                }`;
+                button.textContent = type === "all" ? "All Projects" : type;
+                button.addEventListener('click', () => {
+                    activeFilter = type;
+                    renderFilters();
+                    renderProjects();
+                });
+                filterContainer.appendChild(button);
+            });
+        }
+
+        // Render Projects
+        function renderProjects() {
+            const filteredProjects = activeFilter === "all" 
+                ? projects 
+                : projects.filter(project => 
+                    project.type.toLowerCase().includes(activeFilter.toLowerCase())
+                );
+
+            projectsContainer.innerHTML = '';
+            
+            if (filteredProjects.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+
+            filteredProjects.forEach((project, index) => {
+                const projectElement = document.createElement('div');
+                projectElement.className = `group hover:shadow-2xl transition-all-500 transform hover-lift border border-gray-200 shadow-lg overflow-hidden bg-white animate-fade-in`;
+                projectElement.style.animationDelay = `${index * 100}ms`;
+                
+                // Get icon mapping
+                const iconMap = {
+                    'users': 'users',
+                    'code-2': 'code-2',
+                    'smartphone': 'smartphone',
+                    'bar-chart-3': 'bar-chart-3',
+                    'cloud': 'cloud',
+                    'bot': 'bot'
+                };
+                
+                projectElement.innerHTML = `
+                    <div class="p-0">
+                        <!-- Project Header -->
+                        <div class="p-6 border-b border-gray-200">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center">
+                                        <i data-lucide="${iconMap[project.icon] || 'code-2'}" class="h-6 w-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-800">${project.title}</h3>
+                                        <span class="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold mt-1">
+                                            ${project.type}
+                                        </span>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 rounded-full text-xs font-semibold ${
+                                    project.status === "Live" 
+                                        ? "bg-green-100 text-green-600" 
+                                        : project.status === "Beta"
+                                        ? "bg-yellow-100 text-yellow-600"
+                                        : "bg-blue-100 text-blue-600"
+                                }">
+                                    ${project.status}
+                                </span>
+                            </div>
+                            
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                ${project.description}
+                            </p>
+
+                            <!-- Project Stats -->
+                            <div class="flex items-center gap-4 text-xs text-gray-500">
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="users" class="h-3 w-3"></i>
+                                    <span>${project.contributors} contributors</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span>${project.stars} stars</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technologies -->
+                        <div class="p-6 border-b border-gray-200">
+                            <h4 class="text-sm font-semibold text-gray-800 mb-3">Technologies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${project.technologies.map(tech => `
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                                        ${tech}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Project Info & Actions -->
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <p class="text-sm text-gray-600">
+                                        <strong class="text-gray-800">Project Lead:</strong> ${project.lead}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex gap-3">
+                                <a href="${project.websiteUrl}" target="_blank" rel="noopener noreferrer" 
+                                   class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg flex items-center justify-center transition-all-300">
+                                    <i data-lucide="globe" class="h-4 w-4 mr-2"></i>
+                                    Live Demo
+                                </a>
+                                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
+                                   class="flex-1 border border-gray-300 text-gray-700 hover:border-gray-400 py-2 px-4 rounded-lg flex items-center justify-center transition-all-300">
+                                    <i data-lucide="github" class="h-4 w-4 mr-2"></i>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                projectsContainer.appendChild(projectElement);
+            });
+            
+            // Re-initialize icons in the new content
+            lucide.createIcons();
+        }
+
+        // Mobile Menu Toggle
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('animate-fade-in');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('animate-fade-in');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFilters();
+            renderProjects();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                    !mobileMenu.contains(e.target) && 
+                    !mobileMenuButton.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+            
+            // Close mobile menu on window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768 && mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
